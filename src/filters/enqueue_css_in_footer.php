@@ -2,6 +2,9 @@
 
 namespace andyp\cpt\syllabus\filters;
 
+/**
+ * Include extra CSS into the footer of the page
+ */
 class enqueue_css_in_footer
 {
 
@@ -13,16 +16,8 @@ class enqueue_css_in_footer
 	}
 
 
-    /**
-     * Tidy up the titles on the dashboard
-     */
     public function register_css() {
-
-        // if (is_singular($this->page_type))
-        // {
-            wp_enqueue_style( $this->page_type.'-style', ANDYP_CPT_SYLLABUS_URL . 'src/css/style.css' );
-        // }
-        
+        wp_enqueue_style( $this->page_type.'-style', ANDYP_CPT_SYLLABUS_URL . 'src/css/style.css' );
     }
 
 }

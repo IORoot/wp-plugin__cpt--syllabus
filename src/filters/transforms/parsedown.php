@@ -1,6 +1,7 @@
 <?php
 
 namespace andyp\cpt\syllabus\filters\transforms;
+
 /**
  * Filters content for Markdown and converts it to HTML.
  */

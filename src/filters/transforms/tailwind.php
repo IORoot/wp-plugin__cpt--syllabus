@@ -70,9 +70,6 @@ class tailwind {
         return 'border-green-500 my-20 border-2';
     }
 
-
-
-
     public function ul()
     {
         return 'text-xl list-outside list-disc bg-gray-100 p-6 pl-12 my-10';
@@ -87,7 +84,5 @@ class tailwind {
     {
         return 'text-2xl pl-4 pb-4 leading-relaxed';
     }
-
-
 
 }

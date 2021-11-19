@@ -2,7 +2,12 @@
 
 namespace andyp\cpt\syllabus\filters;
 
-
+/**
+ * Register the location of all template files
+ * to be in this plugin and NOT in the theme.
+ * All template views will be registered to be
+ * in /src/views
+ */
 class register_template_folder
 {
 
@@ -25,7 +30,6 @@ class register_template_folder
         global $wp_query;
         global $post;
 
-        // check we are registering for 'syllabus' only.
         if ( $post->post_type !=  $this->post_type){ return $template; }
 
         if (is_tax())

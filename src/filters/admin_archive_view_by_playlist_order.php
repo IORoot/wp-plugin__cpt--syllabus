@@ -2,7 +2,6 @@
 
 namespace andyp\cpt\syllabus\filters;
 
-
 /**
  * 
  * Using Wordpress Pre-Get filter to order the custom taxonomy by playlistOrder
@@ -10,7 +9,6 @@ namespace andyp\cpt\syllabus\filters;
  * This is so the order isn't by published date.
  * 
  */
-
 class admin_archive_view_by_playlist_order
 {
 
