@@ -9,6 +9,7 @@ class tailwind {
 
     public $text;
     public $matches;
+    public $options;
 
     public function __construct()
     {
@@ -18,6 +19,7 @@ class tailwind {
     public function callback($text)
     {
         $this->text = $text;
+        $this->get_options();
         $this->match_open_tag();
         $this->array_unique();
         $this->loop_matches();
@@ -39,9 +41,7 @@ class tailwind {
     {
         foreach ($this->matches[1] as $key => $match)
         {
-            if (!method_exists($this, $match)){ continue; }
-
-            $tailwind_classes = $this->$match();
+            $tailwind_classes = $this->get_classes($match);
 
             $transform = $this->matches[0][$key] . ' class="'.$tailwind_classes.'" ';
 
@@ -50,39 +50,25 @@ class tailwind {
     }
 
 
-    public function h2()
+    public function get_options()
     {
-        return 'text-4xl my-10 font-thin';
+        $this->options = get_field('syllabus_filters', 'option', true);
     }
 
-    public function h3()
+    
+    public function get_classes($tag = null)
     {
-        return 'text-3xl my-10 font-thin';
-    }
+        if (!$tag){ return false; }
+        $classes = '';
 
-    public function p()
-    {
-        return 'text-2xl mb-4 leading-relaxed';
-    }
+        foreach($this->options as $option)
+        {
+            if ($option['acf_fc_layout'] != 'html_tag'){ continue; }
+            if (strtolower($option['target_tag']) != strtolower($tag)){ continue; }
+            if (strtolower($option['target_tag']) == strtolower($tag)){ $classes = $option['classes']; }
+        }
 
-    public function hr()
-    {
-        return 'border-green-500 my-20 border-2';
-    }
-
-    public function ul()
-    {
-        return 'text-xl list-outside list-disc bg-gray-100 p-6 pl-12 my-10';
-    }
-
-    public function ol()
-    {
-        return 'text-xl list-outside list-decimal bg-gray-100 p-6 pl-12 my-10';
-    }
-
-    public function li()
-    {
-        return 'text-2xl pl-4 pb-4 leading-relaxed';
+        return $classes;
     }
 
 }
