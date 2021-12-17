@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Function to return all of the heirarchical terms
+ * with their metadata and ACF fields attached.
+ */
 function set_post_terms_hierarchical($post) {    
 
 	$taxonomies_of_post = get_object_taxonomies( $post );

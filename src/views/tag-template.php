@@ -32,36 +32,12 @@ foreach ($current_term->acf['meta_fields'] as $meta_field)
             <?php
             // ┌─────────────────────────────────────────────────────────────────────────┐
             // │                                                                         │
-            // │                                BREADCRUMBS                              │
-            // │                                                                         │
-            // └─────────────────────────────────────────────────────────────────────────┘
-            ?>
-            <?php do_shortcode('[breadcrumb colour="green-500"]'); ?>
-
-            <?php
-            // ┌─────────────────────────────────────────────────────────────────────────┐
-            // │                                                                         │
             // │                            THE VIDEO LISTINGS                           │
             // │                                                                         │
             // └─────────────────────────────────────────────────────────────────────────┘
             ?>
             <div class="mt-20">
-                <?php include( __DIR__ . '/category-sub-parts/subcategory_video_cards.php'); ?>
-            </div>
-
-            <?php
-            // ┌─────────────────────────────────────────────────────────────────────────┐
-            // │                                                                         │
-            // │                             SERIES VIDEOS                               │
-            // │                                                                         │
-            // └─────────────────────────────────────────────────────────────────────────┘
-            ?>
-            <div class="flex flex-wrap mt-20 relative">
-            <?php
-                if ($wp_query->queried_object->parent != $wp_query->queried_object->term_id){
-                    include( __DIR__ . '/category-sub-parts/subcategory_video_cards.php');
-                }
-            ?>
+                <?php include( __DIR__ . '/tag-parts/listings.php'); ?>
             </div>
 
     </main>

@@ -1,75 +1,80 @@
 <?php
 
-    $published = human_time_diff( get_the_time( 'U', $post ), current_time( 'timestamp' ) ) . ' ago.';
-    $category  = get_the_term_list($post->ID, 'syllabus_category', '<span class="pr-2 hover:text-green-500">','</span><span class="pr-2 hover:text-green-500">', '</span>');
-    $tags      = get_the_term_list($post->ID, 'syllabus_tags', '<span class="pr-2 hover:text-green-500">','</span><span class="pr-2 hover:text-green-500">', '</span>');
+    $syllabus_rules = get_field('variables');
 
-    $position  = get_post_meta($post->ID, 'playlistPosition');
-    $cat       = get_the_terms($post, 'syllabus_category');
-    $episode   = ($position[0] + 1) . ' / ' . $cat[0]->count;
-    
+    $html[] = '<div class="text-2xl mb-4 mt-10">Rules</div>';
+    $html[] = '<hr class="mb-4"/>';
+    $html[] = '<div class="w-full flex flex-row flex-wrap gap-4 mb-10">';
+
+    $loop_count = 1;
+    foreach($syllabus_rules as $rules)
+    {
+        // ┌─────────────────────────────────────────────────────────────────────────┐
+        // │                                                                         │
+        // │                                  TITLE                                  │
+        // │                                                                         │
+        // └─────────────────────────────────────────────────────────────────────────┘
+        $rule_type = $rules['acf_fc_layout'];
+
+        // ┌─────────────────────────────────────────────────────────────────────────┐
+        // │                                                                         │
+        // │                              More or Less?                              │
+        // │                                                                         │
+        // └─────────────────────────────────────────────────────────────────────────┘
+        $more_or_less = '';
+        if (isset($rules['more_or_less']))
+        {
+            $more_or_less = 'or '.$rules['more_or_less'];
+        }
+
+        // ┌─────────────────────────────────────────────────────────────────────────┐
+        // │                                                                         │
+        // │                              MULTIPLIER                                 │
+        // │                                                                         │
+        // └─────────────────────────────────────────────────────────────────────────┘
+        $multiplier = '';
+        if (isset($rules['multiplier']))
+        {
+            $multiplier = $rules['multiplier'] . 'x';
+        }
+
+        // ┌─────────────────────────────────────────────────────────────────────────┐
+        // │                                                                         │
+        // │                                HTML                                     │
+        // │                                                                         │
+        // └─────────────────────────────────────────────────────────────────────────┘
+        $html[] = '<div class="bg-ghost rounded-2xl p-4 w-1/4 flex-grow">';
+
+        $html[] = '<div class="flex flex-row">';
+
+            //SVG
+            $html[] = '<div class="w-8 h-8 mr-4">'.$rules['svg'].'</div>';
+            // Title
+            $html[] = '<div class="h-8 py-1 text-xl text-Cyan500 capitalize">Rule '. $loop_count . '. ' .$rule_type.'</div>';
+
+        $html[] = '</div>';
+
+
+        // Value
+        $html[] = '<p class="bg-Cyan500 text-white p-2 my-2 text-center rounded-lg">'.$multiplier . ' <b>' . $rules[$rule_type]. '</b> '  . ' ' . $more_or_less .'</p>';
+
+        // Description
+        $html[] = '<p>'.$rules['description'].'</p>';
+
+        /**
+         * Loop all values for debug.
+         */
+        // foreach($rules as $info_key => $info_value)
+        // {
+        //     $html[] = '<li>'.$info_key.' : <b>'.$info_value.'</b></li>';
+        // }
+
+        $html[] = '</div>';
+
+        $loop_count++;
+    }
+    $html[] = '</div>';
+
+    echo implode('', $html);
+
 ?>
-
-<div class="flex flex-col w-full sm:w-1/2 lg:w-full mt-4 lg:mt-0 ml-0 sm:ml-4 lg:ml-0">
-
-    <div class="flex-1 flex gap-4 mb-4">
-
-        <?php   
-        // ┌─────────────────────────────────────────────────────────────────────────┐
-        // │                                                                         │
-        // │                            PUBLISHED DATE                               │
-        // │                                                                         │
-        // └─────────────────────────────────────────────────────────────────────────┘
-        ?>
-        <div class="w-1/2 bg-gray-200 rounded-2xl p-4">
-            <div class="font-semibold">Published</div>
-            <div class="font-thin"><?php echo $published; ?></div>
-        </div>
-
-        <?php   
-        // ┌─────────────────────────────────────────────────────────────────────────┐
-        // │                                                                         │
-        // │                               CATEGORY                                  │
-        // │                                                                         │
-        // └─────────────────────────────────────────────────────────────────────────┘
-        ?>
-        <div class="w-1/2 bg-gray-200 rounded-2xl p-4">
-            <div class="font-semibold">Category</div>
-            <div class="font-thin capitalize underline"><?php echo $category; ?></div>
-        </div>
-
-
-
-    </div>
-    <div class="flex-1 flex mb-6 gap-4">
-
-        <?php   
-        // ┌─────────────────────────────────────────────────────────────────────────┐
-        // │                                                                         │
-        // │                                   TAGS                                  │
-        // │                                                                         │
-        // └─────────────────────────────────────────────────────────────────────────┘
-        ?>
-        <div class="w-1/2 bg-gray-200 rounded-2xl p-4">
-            <div class="font-semibold">Tags</div>
-            <div class="font-thin capitalize underline"><?php echo $tags; ?></div>
-        </div>
-
-        <?php   
-        // ┌─────────────────────────────────────────────────────────────────────────┐
-        // │                                                                         │
-        // │                               EPISODE                                   │
-        // │                                                                         │
-        // └─────────────────────────────────────────────────────────────────────────┘
-        ?>
-        <div class="w-1/2 bg-gray-200 rounded-2xl p-4">
-            <div class="font-semibold">Episode</div>
-            <div class="font-thin"><?php 
-                echo $episode;
-            ?></div>
-        </div>
-
-
-
-    </div>
-</div>

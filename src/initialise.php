@@ -19,6 +19,8 @@ class initialise
         $this->enqueue_css();
         $this->register_transform_filters();
         $this->register_REST_metadata();
+        $this->disable_visual_editor();
+        $this->register_shortcode();
     }
 
     public function set_config($config)
@@ -98,6 +100,14 @@ class initialise
     }
 
     /**
+     * Disable 'visual' editor. 
+     */
+    public function disable_visual_editor()
+    {
+        new filters\disable_visual_editor($this->config['post_type']);
+    }
+
+    /**
      * Parsee any text (Markdown) into HTML.
      */
     public function register_transform_filters()
@@ -113,6 +123,14 @@ class initialise
     public function register_REST_metadata()
     {
         new REST\metadata;
+    }
+
+    
+    public function register_shortcode()
+    {
+        $shortcode = new shortcodes\syllabus_posts;
+        $shortcode->set_config($this->config);
+        $shortcode->register();
     }
 
 
