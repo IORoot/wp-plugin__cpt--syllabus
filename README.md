@@ -8,3 +8,7 @@ Contains:
 1. syllabus Taxonomy
 1. syllabus Tags
 1. syllabus Settings
+
+## Changelog
+
+v1.0.0 - Initial Release
