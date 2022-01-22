@@ -11,6 +11,7 @@ class initialise
     {
         $this->setup_cpt();
         $this->register_cpt();
+        $this->register_acf_panels();
         $this->register_settings_page();
         $this->switch_on_metaboxes();
         $this->add_admin_view();
@@ -57,6 +58,14 @@ class initialise
     public function register_settings_page()
     {
         new acf\acf_admin_menu;
+    }    
+
+    /**
+     * Create ACF Panels
+     */
+    public function register_acf_panels()
+    {
+        new acf\acf_panels;
     }
 
     /**

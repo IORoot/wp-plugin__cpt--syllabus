@@ -1,0 +1,51 @@
+[
+    {
+        "key": "group_619a790281443",
+        "title": "Syllabus Taxonomy Settings",
+        "fields": [
+            {
+                "key": "field_619a790bf9423",
+                "label": "SVG Glyph",
+                "name": "svg_glyph",
+                "type": "textarea",
+                "instructions": "SVG Code for this taxonomy",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "ue__codemirror",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": "",
+                "new_lines": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "taxonomy",
+                    "operator": "==",
+                    "value": "syllabus_category"
+                }
+            ],
+            [
+                {
+                    "param": "taxonomy",
+                    "operator": "==",
+                    "value": "syllabus_tags"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Add Glyph to Taxonomies ( Categories & Tags )"
+    }
+]

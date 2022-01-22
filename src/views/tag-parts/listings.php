@@ -116,18 +116,6 @@ foreach ($reverse_order as $loop_key => $post) {
                             </div>
                     </div>
 
-
-                    <?php
-                    // ┌─────────────────────────────────────────────────────────────────────────┐
-                    // │                                                                         │
-                    // │                            CATEGORY GLYPH                               │
-                    // │                                                                         │
-                    // └─────────────────────────────────────────────────────────────────────────┘
-                    ?>
-                    <svg class="z-20 absolute fill-green-600 -top-1/2 -left-1/2 opacity-10" style="width:200%; height:200%;">
-                        <use xlink:href="#<?php echo $current_term->acf['meta_fields']['SVG Glyph']; ?>"></use>
-                    </svg>
-
             </div>
 
 
