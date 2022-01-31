@@ -53,7 +53,7 @@ class post_type
 	public function register_on_init()
 	{
 		// needs to be AFTER taxonomy is declared in init
-		add_action( 'init', array($this, 'register_cpt'), 8 );
+		add_action( 'init', array($this, 'register_cpt'), 1 );
 	}
 
 
@@ -119,7 +119,14 @@ class post_type
 				'publicly_queryable'    => true,
 				'capability_type'       => 'page',
 				'has_archive'           => false,
-				'rewrite'               => true,
+
+				/**
+				 * Rewrite the URL 'syllabus_category' to be the custom post_type 'Syllabus' instead.
+				 */
+				'rewrite'               => [
+					'slug' => strtolower($this->singular . '/%' . $this->singular . '_category%'), 
+					'with_front' => false,
+				],
 			] 
 		);
 	}

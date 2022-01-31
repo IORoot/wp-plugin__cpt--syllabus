@@ -42,7 +42,7 @@ class taxonomy
 	 */
 	public function register_on_init()
 	{
-		add_action( 'init', array($this, 'callback_to_add_taxonomy'), 5 );
+		add_action( 'init', array($this, 'callback_to_add_taxonomy'), 4 );
 	}
 
 
@@ -91,7 +91,7 @@ class taxonomy
 				'show_in_rest' 				 => true,
 				'show_tagcloud'              => true,
 				'rewrite'                    => [
-					'slug'         => $this->taxonomy, 
+					'slug'         => strtolower($this->singular), 
 					'with_front'   => false,
 					'hierarchical' => true
 				],

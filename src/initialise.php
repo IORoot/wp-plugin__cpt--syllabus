@@ -11,12 +11,11 @@ class initialise
     {
         $this->setup_cpt();
         $this->register_cpt();
+        $this->rewite_post_link();
         $this->register_acf_panels();
         $this->register_settings_page();
         $this->switch_on_metaboxes();
         $this->add_admin_view();
-        $this->register_template_folder();
-        $this->register_sidebar_widget();
         $this->enqueue_css();
         $this->register_transform_filters();
         $this->register_REST_metadata();
@@ -85,22 +84,6 @@ class initialise
     }
 
     /**
-     * Register the view templates to be in /src/views
-     */
-    public function register_template_folder()
-    {
-        new filters\register_template_folder($this->config['post_type']);
-    }
-
-    /**
-     * Register a sidebar widget area for the pages
-     */
-    public function register_sidebar_widget()
-    {
-        new register\sidebar_widget(ucfirst($this->config['post_type']));
-    }
-
-    /**
      * Enqueue some extra CSS 
      */
     public function enqueue_css()
@@ -143,5 +126,8 @@ class initialise
     }
 
 
-
+    public function rewite_post_link()
+    {
+        new filters\rewite_post_link($this->config['post_type']);
+    }
 }
