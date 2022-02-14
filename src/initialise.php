@@ -109,6 +109,9 @@ class initialise
 
         // Add tailwind classes
         new filters\transforms\tailwind;
+
+        // Add structure to elements
+        new filters\transforms\structure;
     }
 
 

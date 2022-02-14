@@ -10,7 +10,7 @@ class acf_panels
 
     public function __construct(){
         $this->register_variables();
-        $this->register_general_settings();
+        // $this->register_general_settings();
         $this->register_post_settings();
         $this->register_taxonomy_settings();
         
