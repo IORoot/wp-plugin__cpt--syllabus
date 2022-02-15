@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 if( function_exists('acf_add_local_field_group') ):
 
@@ -11,7 +11,12 @@ if( function_exists('acf_add_local_field_group') ):
                 'label' => 'Content Filters',
                 'name' => 'syllabus_filters',
                 'type' => 'flexible_content',
-                'instructions' => 'Filters to apply to the content of Syllabus posts. These will be processed in order from top to bottom.',
+                'instructions' => 'Filters to apply to the content of Syllabus posts. These will be processed in a loop as follows:<br/>
+    Parsedown : importance 20<br/>
+    HTML Tags : importance 25<br/>
+    Structure : importance 30<br/>
+    <br/>
+    For example, all structure tags will be filtered last.',
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -88,6 +93,73 @@ if( function_exists('acf_add_local_field_group') ):
                                     'id' => '',
                                 ),
                                 'default_value' => '',
+                                'placeholder' => '',
+                                'prepend' => '',
+                                'append' => '',
+                                'maxlength' => '',
+                            ),
+                        ),
+                        'min' => '',
+                        'max' => '',
+                    ),
+                    'layout_620670ea0fa65' => array(
+                        'key' => 'layout_620670ea0fa65',
+                        'name' => 'structure',
+                        'label' => 'Structure',
+                        'display' => 'block',
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_6206728d0fa66',
+                                'label' => 'preg_search',
+                                'name' => 'preg_search',
+                                'type' => 'textarea',
+                                'instructions' => 'Regex. Include delimiter but not quotes.',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '30',
+                                    'class' => 'ue__codemirror',
+                                    'id' => '',
+                                ),
+                                'default_value' => '/replacethis/',
+                                'placeholder' => '',
+                                'maxlength' => '',
+                                'rows' => 2,
+                                'new_lines' => '',
+                            ),
+                            array(
+                                'key' => 'field_620672ef0fa67',
+                                'label' => 'Replacement',
+                                'name' => 'replacement',
+                                'type' => 'textarea',
+                                'instructions' => 'Text to put in as the replacement. Capture groups will work.',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '60',
+                                    'class' => 'ue__codemirror',
+                                    'id' => '',
+                                ),
+                                'default_value' => 'with this.',
+                                'placeholder' => '',
+                                'maxlength' => '',
+                                'rows' => 2,
+                                'new_lines' => '',
+                            ),
+                            array(
+                                'key' => 'field_62067b00ded8c',
+                                'label' => 'Limit',
+                                'name' => 'limit',
+                                'type' => 'text',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '10',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'default_value' => -1,
                                 'placeholder' => '',
                                 'prepend' => '',
                                 'append' => '',
