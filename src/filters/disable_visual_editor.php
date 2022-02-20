@@ -13,6 +13,7 @@ class disable_visual_editor
 
         add_filter('user_can_richedit', function( $default ){
             global $post;
+            if ( is_null($post)){ return $default; }
             if( $post->post_type === $this->page_type)  return false;
             return $default;
         });
