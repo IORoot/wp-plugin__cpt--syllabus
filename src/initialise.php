@@ -100,7 +100,7 @@ class initialise
     }
 
     /**
-     * Parsee any text (Markdown) into HTML.
+     * Parse any text (Markdown) into HTML.
      */
     public function register_transform_filters()
     {

@@ -77,20 +77,16 @@ if( function_exists('acf_add_local_field_group') ):
                     'class' => '',
                     'id' => '',
                 ),
+                'hide_admin' => 0,
                 'choices' => array(
-                    'mist' => 'No',
-                    'Emerald400' => 'Yes',
+                    'zinc-100' => 'No',
+                    'emerald-500' => 'Yes',
                 ),
                 'default_value' => false,
                 'allow_null' => 0,
                 'multiple' => 0,
                 'ui' => 0,
                 'return_format' => 'value',
-                'show_column' => 1,
-                'show_column_sortable' => 1,
-                'show_column_weight' => 1000,
-                'allow_quickedit' => 1,
-                'allow_bulkedit' => 1,
                 'ajax' => 0,
                 'placeholder' => '',
             ),
@@ -2695,6 +2691,7 @@ if( function_exists('acf_add_local_field_group') ):
         'hide_on_screen' => '',
         'active' => true,
         'description' => 'Custom Fields for each syllabus entry.',
+        'show_in_rest' => 0,
     ));
     
-    endif;
+    endif;		
