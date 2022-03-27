@@ -23,6 +23,8 @@ class create_cpt
 
     public $category;
 
+    public $format;
+
     public $tags;
 
     

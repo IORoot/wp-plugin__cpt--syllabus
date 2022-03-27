@@ -92,6 +92,8 @@ class tags
 				],
 			] 
 		);
+
+		$result = register_taxonomy_for_object_type($this->taxonomy, strtolower($this->singular));
 	}
 
 }
