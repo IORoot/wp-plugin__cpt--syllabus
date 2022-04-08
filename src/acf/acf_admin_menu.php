@@ -11,6 +11,16 @@ class acf_admin_menu
 
     public function __construct(){
 
+        $this->menu_syllabus_settings();
+        $this->menu_syllabus_paths();
+
+    }
+
+    /**
+     * Syllabus -> Settings
+     */
+    public function menu_syllabus_settings()
+    {
         if (function_exists('acf_add_options_page')) {
             $argsparent = array(
             'page_title' => 'Settings',
@@ -19,7 +29,7 @@ class acf_admin_menu
             'capability' => 'manage_options',
             'position' => 1,
             'parent_slug' => 'edit.php?post_type=syllabus',
-            'icon_url' => 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iI0Y1OUUwQiIgZD0iTTEyLDNMMSw5TDEyLDE1TDIxLDEwLjA5VjE3SDIzVjlNNSwxMy4xOFYxNy4xOEwxMiwyMUwxOSwxNy4xOFYxMy4xOEwxMiwxN0w1LDEzLjE4WiIvPjwvc3ZnPg==',
+            'icon_url' => '',
             'redirect' => true,
             'post_id' => 'options',
             'autoload' => false,
@@ -28,7 +38,32 @@ class acf_admin_menu
         );
             acf_add_options_page($argsparent);
         }
+    }
 
+    /**
+     * Syllabus -> Paths
+     *
+     * @return void
+     */
+    public function menu_syllabus_paths()
+    {
+        if (function_exists('acf_add_options_page')) {
+            $argsparent = array(
+            'page_title' => 'Paths',
+            'menu_title' => 'Paths',
+            'menu_slug' => 'syllabus_paths',
+            'capability' => 'manage_options',
+            'position' => 2,
+            'parent_slug' => 'edit.php?post_type=syllabus',
+            'icon_url' => '',
+            'redirect' => true,
+            'post_id' => 'options',
+            'autoload' => false,
+            'update_button'		=> __('Update', 'acf'),
+            'updated_message'	=> __("Options Updated", 'acf'),
+        );
+            acf_add_options_page($argsparent);
+        }
     }
 
 }
