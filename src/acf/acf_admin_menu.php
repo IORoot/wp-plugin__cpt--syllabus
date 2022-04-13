@@ -12,7 +12,6 @@ class acf_admin_menu
     public function __construct(){
 
         $this->menu_syllabus_settings();
-        $this->menu_syllabus_paths();
 
     }
 
@@ -28,32 +27,6 @@ class acf_admin_menu
             'menu_slug' => 'syllabus_settings',
             'capability' => 'manage_options',
             'position' => 1,
-            'parent_slug' => 'edit.php?post_type=syllabus',
-            'icon_url' => '',
-            'redirect' => true,
-            'post_id' => 'options',
-            'autoload' => false,
-            'update_button'		=> __('Update', 'acf'),
-            'updated_message'	=> __("Options Updated", 'acf'),
-        );
-            acf_add_options_page($argsparent);
-        }
-    }
-
-    /**
-     * Syllabus -> Paths
-     *
-     * @return void
-     */
-    public function menu_syllabus_paths()
-    {
-        if (function_exists('acf_add_options_page')) {
-            $argsparent = array(
-            'page_title' => 'Paths',
-            'menu_title' => 'Paths',
-            'menu_slug' => 'syllabus_paths',
-            'capability' => 'manage_options',
-            'position' => 2,
             'parent_slug' => 'edit.php?post_type=syllabus',
             'icon_url' => '',
             'redirect' => true,

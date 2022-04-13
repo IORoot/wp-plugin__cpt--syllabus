@@ -13,7 +13,6 @@ class acf_panels
         $this->register_general_settings();
         $this->register_post_settings();
         $this->register_taxonomy_settings();
-        $this->register_tutorials();
         
     }
 
@@ -37,10 +36,9 @@ class acf_panels
         require __DIR__.'/acf_panels_taxonomy_settings.php';
     }
 
-    public function register_tutorials()
+    public function register_on_update()
     {
-        require __DIR__.'/acf_panels_tutorials.php';
+        require __DIR__.'/acf_on_update.php';
     }
-
 
 }
