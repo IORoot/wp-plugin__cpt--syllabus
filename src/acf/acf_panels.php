@@ -13,6 +13,7 @@ class acf_panels
         $this->register_general_settings();
         $this->register_post_settings();
         $this->register_taxonomy_settings();
+        $this->register_on_update();
         
     }
 
